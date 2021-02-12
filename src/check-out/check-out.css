@@ -1,0 +1,18 @@
+.receipt-wrapper {
+  padding: 0 2rem 0 2rem;
+  display: grid;
+  grid-template-columns: 3fr repeat(2, 1fr);
+  column-gap: 1rem;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.right-text {
+  text-align: right;
+}
+
+.two-col {
+  grid-column: 1/3;
+}

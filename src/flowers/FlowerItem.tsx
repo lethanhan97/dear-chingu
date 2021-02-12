@@ -6,17 +6,15 @@ import './flower-item.css';
 
 function FlowerItem({ details }: FlowerItemProps) {
   const { displayName, imageUrl, price, id } = details;
-  const [count, setCount] = useState(0);
   const cart = useCart();
 
   const addItem = () => {
-    setCount(count + 1);
     cart.addOrder(id);
   };
 
   const removeItem = () => {
-    if (count > 0) {
-      setCount(count - 1);
+    const currentItem = cart.orders[id];
+    if (currentItem?.quantity > 0) {
       cart.removeOrder(id);
     }
   };
@@ -25,12 +23,12 @@ function FlowerItem({ details }: FlowerItemProps) {
     <article className="flower-item-wrapper">
       <img src={imageUrl} alt="Girl in a jacket" />
       <h4>{displayName}</h4>
-      <p>{price} SGD</p>
+      <p>{price.toFixed(2)} SGD</p>
 
       <div className="flower-item-counter">
         <FaMinus onClick={removeItem}></FaMinus>
         <span className="spacer"></span>
-        {count}
+        {cart.orders[id]?.quantity || '0'}
         <span className="spacer"></span>
         <FaPlus onClick={addItem}></FaPlus>
       </div>

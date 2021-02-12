@@ -1,9 +1,10 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import './App.css';
+
 import Footer from './core/Footer';
 import Header from './core/Header';
 import FlowerPage from './flowers/FlowerPage';
-
-import './App.css';
+import CheckOutPage from './check-out/CheckOutPage';
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
 
       <main>
         <Switch>
-          <Route path="/check-out" component={() => <div>Hello</div>}></Route>
+          <Route path="/check-out" component={CheckOutPage}></Route>
           <Route path="/" component={FlowerPage}></Route>
         </Switch>
       </main>
