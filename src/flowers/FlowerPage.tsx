@@ -7,7 +7,7 @@ function FlowerPage() {
   return (
     <section className="flower-page-wrapper">
       {data.map((item) => (
-        <FlowerItem details={item}></FlowerItem>
+        <FlowerItem key={item.id} details={item}></FlowerItem>
       ))}
     </section>
   );
