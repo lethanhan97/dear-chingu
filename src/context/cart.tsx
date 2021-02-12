@@ -5,6 +5,7 @@ import data from '../data/data.json';
 const initialData: CartData = {
   orders: {},
   totalOrders: 0,
+  totalPrice: 0,
   addOrder: () => {},
   removeOrder: () => {},
 };
@@ -14,6 +15,7 @@ const CartContext = createContext(initialData);
 const CartProvider = ({ children }: { children: React.ReactNode }) => {
   const [orders, setOrders] = useState({} as { [id: string]: CartItem });
   const [totalOrders, setTotalOrders] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   const addOrder = (id: string) => {
     if (orders[id]) {
@@ -23,6 +25,7 @@ const CartProvider = ({ children }: { children: React.ReactNode }) => {
 
       setOrders(orders);
       setTotalOrders(totalOrders + 1);
+      setTotalPrice(totalPrice + orderItem.price);
     } else {
       // Order doesnt exist
       const item: Item | undefined = data.find((item) => item.id === id);
@@ -32,6 +35,7 @@ const CartProvider = ({ children }: { children: React.ReactNode }) => {
 
         setOrders(orders);
         setTotalOrders(totalOrders + 1);
+        setTotalPrice(totalPrice + newOrderItem.price);
       } else {
         console.warn('Item dont exist');
       }
@@ -43,6 +47,7 @@ const CartProvider = ({ children }: { children: React.ReactNode }) => {
     if (orders[id]) {
       // Order exists
       const currentQty = orders[id].quantity;
+      const currentPrice = orders[id].price;
       if (currentQty === 1) {
         delete orders[id];
       } else {
@@ -51,6 +56,7 @@ const CartProvider = ({ children }: { children: React.ReactNode }) => {
 
       setOrders(orders);
       setTotalOrders(totalOrders - 1);
+      setTotalPrice(totalPrice - currentPrice);
     } else {
       console.warn('Order ID dont exist');
     }
@@ -60,7 +66,7 @@ const CartProvider = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <CartContext.Provider
-      value={{ orders, totalOrders, addOrder, removeOrder }}
+      value={{ orders, totalOrders, totalPrice, addOrder, removeOrder }}
     >
       {children}
     </CartContext.Provider>
@@ -76,6 +82,7 @@ interface CartData {
     [id: string]: CartItem;
   };
   totalOrders: number;
+  totalPrice: number;
   addOrder: (id: string) => void;
   removeOrder: (id: string) => void;
 }

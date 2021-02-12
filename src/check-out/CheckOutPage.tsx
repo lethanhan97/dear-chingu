@@ -42,8 +42,12 @@ function CheckOutPage() {
           Total
         </h3>
         <h3 className="center-text" style={{ marginTop: '5rem' }}>
-          100 SGD
+          {cart.totalPrice.toFixed(2)} SGD
         </h3>
+
+        <div className="btn-wrapper">
+          <button className="submit-btn">Submit Order</button>
+        </div>
       </div>
     </section>
   );
