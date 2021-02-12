@@ -1,0 +1,32 @@
+[
+  {
+    "id": "1",
+    "displayName": "Flower 1",
+    "price": 20,
+    "imageUrl": "https://cdn.pixabay.com/photo/2018/02/08/22/27/flower-3140492_1280.jpg"
+  },
+  {
+    "id": "2",
+    "displayName": "Flower 2",
+    "price": 24,
+    "imageUrl": "https://cdn.pixabay.com/photo/2015/04/19/08/32/marguerite-729510_1280.jpg"
+  },
+  {
+    "id": "3",
+    "displayName": "Flower 4",
+    "price": 25,
+    "imageUrl": "https://cdn.pixabay.com/photo/2015/04/19/08/32/rose-729509_1280.jpg"
+  },
+  {
+    "id": "5",
+    "displayName": "Flower 5",
+    "price": 13,
+    "imageUrl": "https://cdn.pixabay.com/photo/2015/04/19/08/33/flower-729512_1280.jpg"
+  },
+  {
+    "id": "6",
+    "displayName": "Flower 6",
+    "price": 44,
+    "imageUrl": "https://cdn.pixabay.com/photo/2012/03/01/00/55/garden-19830_1280.jpg"
+  }
+]
