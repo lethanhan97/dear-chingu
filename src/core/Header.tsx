@@ -2,7 +2,7 @@ import './header.css';
 
 function Header() {
   return (
-    <header className="wrapper">
+    <header className="header-wrapper">
       <h1>Deer Pinku</h1>
       <nav>
         <a href="/">Main</a>
