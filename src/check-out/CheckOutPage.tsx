@@ -2,6 +2,7 @@ import './check-out.css';
 import { useCart } from '../context/cart';
 import { Link } from 'react-router-dom';
 import React from 'react';
+import { api } from '../core/api';
 
 function CheckOutPage() {
   const cart = useCart();
@@ -15,6 +16,34 @@ function CheckOutPage() {
       </div>
     );
   }
+
+  const generateMessage = () => {
+    const orderList = orderIDs.reduce((agg, id) => {
+      const { displayName, quantity, price } = cart.orders[id];
+
+      agg += `\t- Name: ${displayName}, Quantity: ${quantity}, Price: ${price.toFixed(
+        2
+      )}\n`;
+      return agg;
+    }, '');
+
+    const message = `<b>Order Received!</b>\n\n\n${orderList}\n\n- Total: ${cart.totalPrice.toFixed(
+      2
+    )}`;
+
+    return message;
+  };
+
+  const submitOrder = () => {
+    const message = generateMessage();
+    api.get('sendMessage', {
+      params: {
+        chat_id: 249069935,
+        text: message,
+        parse_mode: 'html',
+      },
+    });
+  };
 
   return (
     <section>
@@ -46,7 +75,9 @@ function CheckOutPage() {
         </h3>
 
         <div className="btn-wrapper">
-          <button className="submit-btn">Submit Order</button>
+          <button className="submit-btn" onClick={submitOrder}>
+            Submit Order
+          </button>
         </div>
       </div>
     </section>

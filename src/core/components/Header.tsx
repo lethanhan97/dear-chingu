@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import './header.css';
 import { FaShoppingCart } from 'react-icons/fa';
 import BadgedIcon from './BadgedIcon';
-import { useCart } from '../context/cart';
+import { useCart } from '../../context/cart';
 
 function Header() {
   const cart = useCart();

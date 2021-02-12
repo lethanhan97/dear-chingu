@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 
-import Footer from './core/Footer';
-import Header from './core/Header';
+import Footer from './core/components/Footer';
+import Header from './core/components/Header';
 import FlowerPage from './flowers/FlowerPage';
 import CheckOutPage from './check-out/CheckOutPage';
 
