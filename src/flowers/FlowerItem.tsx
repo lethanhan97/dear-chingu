@@ -1,18 +1,24 @@
 import { useState } from 'react';
 import { FaPlus, FaMinus } from 'react-icons/fa';
+import { useCart } from '../context/cart';
 import { Item } from '../models/CartItem';
 import './flower-item.css';
 
 function FlowerItem({ details }: FlowerItemProps) {
-  const { displayName, imageUrl, price } = details;
+  const { displayName, imageUrl, price, id } = details;
   const [count, setCount] = useState(0);
+  const cart = useCart();
 
   const addItem = () => {
     setCount(count + 1);
+    cart.addOrder(id);
   };
 
   const removeItem = () => {
-    if (count > 0) setCount(count - 1);
+    if (count > 0) {
+      setCount(count - 1);
+      cart.removeOrder(id);
+    }
   };
 
   return (
