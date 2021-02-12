@@ -1,0 +1,4 @@
+.flower-page-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
