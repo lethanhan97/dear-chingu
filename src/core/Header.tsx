@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './header.css';
 import { FaShoppingCart } from 'react-icons/fa';
 import BadgedIcon from './BadgedIcon';
@@ -8,10 +9,14 @@ function Header() {
 
   return (
     <header className="header-wrapper">
-      <h1>Deer Pinku</h1>
-      <BadgedIcon count={cart.totalOrders}>
-        <FaShoppingCart size={30}></FaShoppingCart>
-      </BadgedIcon>
+      <Link to="/">
+        <h1>Deer Pinku</h1>
+      </Link>
+      <Link to="/check-out">
+        <BadgedIcon count={cart.totalOrders}>
+          <FaShoppingCart size={30}></FaShoppingCart>
+        </BadgedIcon>
+      </Link>
     </header>
   );
 }
