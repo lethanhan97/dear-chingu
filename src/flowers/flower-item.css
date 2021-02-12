@@ -12,3 +12,12 @@
   height: 20vw;
   object-fit: cover;
 }
+
+.flower-item-counter {
+  padding: 1rem;
+}
+
+.spacer {
+  display: inline-block;
+  width: 1rem;
+}
